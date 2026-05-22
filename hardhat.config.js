@@ -3,7 +3,7 @@ require("dotenv").config();
 
 module.exports = {
   solidity: {
-    version: "0.8.20",
+    version: "0.8.20", // Changed from 0.8.19 to 0.8.20
     settings: {
       optimizer: {
         enabled: true,
@@ -11,21 +11,36 @@ module.exports = {
       },
     },
   },
-
   networks: {
+    // Local Hardhat network (for testing)
     hardhat: {
-      chainId: 31337,
+      chainId: 1337,
     },
-
+    // Localhost (when running npx hardhat node)
     localhost: {
       url: "http://127.0.0.1:8545",
     },
-
+    // SCAI Mainnet
     sepolia: {
-      url: process.env.SEPOLIA_RPC_URL || "",
-      accounts: process.env.PRIVATE_KEY
-        ? [process.env.PRIVATE_KEY]
-        : [],
+  url: "https://ethereum-sepolia-rpc.publicnode.com",
+  accounts: process.env.MAINNET_PRIVATE_KEY ? [process.env.MAINNET_PRIVATE_KEY] : [],
+  chainId: 11155111,
+},
+  },
+  // For contract verification on SCAI Explorer
+  etherscan: {
+    apiKey: {
+      scai: "dummy",
     },
+    customChains: [
+      {
+        network: "scai",
+        chainId: 34,
+        urls: {
+          apiURL: "https://explorer.securechain.ai/api",
+          browserURL: "https://explorer.securechain.ai",
+        },
+      },
+    ],
   },
 };

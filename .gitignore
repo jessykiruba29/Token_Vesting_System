@@ -21,6 +21,7 @@ build/
 # React build
 /frontend/build/
 deployed.json
+deployed-sepolia.json
 
 # Logs
 npm-debug.log*

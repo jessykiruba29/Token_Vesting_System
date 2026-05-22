@@ -81,10 +81,7 @@ function App() {
       <main className="container">
         {account ? (
           <>
-            <div className="dashboard-header">
-              <h2>Overview</h2>
-              <p>{account}</p>
-            </div>
+            
 
             <div className="dashboard">
               <VestingCard
